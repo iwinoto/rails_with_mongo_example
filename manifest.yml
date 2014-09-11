@@ -1,0 +1,15 @@
+---
+env:
+  RAILS_ENV: development
+  RACK_ENV: development
+
+applications:
+- name: rails-mongo-sample
+  memory: 1024M
+  instances: 1
+  host: iw-rails-mongo-sample
+  domain: mybluemix.net
+  path: .
+  command: bundle exec rails s -p $PORT
+  services:
+  - mongo-rails-sample

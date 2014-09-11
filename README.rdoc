@@ -1,0 +1,11 @@
+== README
+Originally from: https://github.com/ezilocchi/rails_with_mongo_example.git
+
+This is an introductional tutorial with the intention of showing how to create a Rails 4 app with MongoDB, using Rspec and Cucumber for testing
+
+The project has been modified for Bluemix deployment.
+To deploy to Bluemix execute from the app root:
+# create the service as named in the manifest.yml
+$ cf create-service mongodb 100 mongo-rails-sample
+# push the application using the default manifest file (manifest.yml)
+$ cf push
