@@ -5,7 +5,12 @@ This is an introductional tutorial with the intention of showing how to create a
 
 The project has been modified for Bluemix deployment.
 To deploy to Bluemix execute from the app root:
+
 # create the service as named in the manifest.yml
+
 $ cf create-service mongodb 100 mongo-rails-sample
+
 # push the application using the default manifest file (manifest.yml)
+
 $ cf push
+
