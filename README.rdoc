@@ -16,3 +16,7 @@ $ cf create-service mongodb 100 mongo-rails-sample
 
 $ cf push
 
+After a successful push the application will be available at:
+
+   http://<your host name>.mybluemix.net/products
+   
