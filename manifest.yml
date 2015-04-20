@@ -5,9 +5,9 @@ env:
 
 applications:
 - name: rails-mongo-sample
-  memory: 1024M
+  memory: 512M
   instances: 1
-  host: <your host name>
+  host: iw-products-dev
   domain: mybluemix.net
   path: .
   command: bundle exec rails s -p $PORT

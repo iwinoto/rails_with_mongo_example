@@ -1,7 +1,9 @@
 <%
   begin
-    mongo_creds = JSON.parse(ENV['VCAP_SERVICES'])["mongodb-2.2"].first["credentials"]
+    mongo_creds = JSON.parse(ENV['VCAP_SERVICES'])["mongodb-2.4"].first["credentials"]
+    puts "'VCAP_SERVICES' set. Getting Mongo connection values"
   rescue
+    puts "'VCAP_SERVICES' not set. Getting default Mongo connection values"
     mongo_creds = Hash[
       "hostname" => "locahost",
       "host" => "127.0.0.1",
@@ -9,10 +11,11 @@
       "username" => "",
       "password" => "",
       "name" => "",
-      "db" => "myapp_development",
+      "db" => "db",
       "url" => "mongodb://127.0.0.1:27017/db"
     ]
   end
+  puts "mongo_creds = #{mongo_creds}"
 %>
 
 development:
@@ -22,13 +25,13 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: <%= mongo_creds["db"] %>
+      database: db
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= mongo_creds["host"] %>:<%= mongo_creds["port"] %>
-      username: <%= mongo_creds["username"] %>
-      password: <%= mongo_creds["password"] %>
+        - 127.0.0.1:27017
+      #username: <%= mongo_creds["username"] %>
+      #password: <%= mongo_creds["password"] %>
       options:
         # Change whether the session persists in safe mode by default.
         # (default: false)
@@ -88,11 +91,11 @@ development:
 test:
   sessions:
     default:
-      database: <%= mongo_creds["db"] %>
+      database: db
       hosts:
-        - <%= mongo_creds["host"] %>:<%= mongo_creds["port"] %>
-      username: <%= mongo_creds["username"] %>
-      password: <%= mongo_creds["password"] %>
+        - 127.0.0.1:27017
+      username: 
+      password: 
       options:
         # consistency is not a valid option in latest mongoid
         #consistency: :strong
@@ -105,10 +108,10 @@ production:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: <%= mongo_creds["db"] %>
+      database: db
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - <%= mongo_creds["host"] %>:<%= mongo_creds["port"] %>
-      username: <%= mongo_creds["username"] %>
-      password: <%= mongo_creds["password"] %>
+        - 127.0.0.1:27017
+      username: 
+      password: 

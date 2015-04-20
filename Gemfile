@@ -47,3 +47,6 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem 'swagger-docs'
+

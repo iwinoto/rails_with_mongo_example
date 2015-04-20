@@ -1,14 +1,30 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+    
+  swagger_controller :products, 'Products'
 
   # GET /products
   # GET /products.json
+
+  swagger_api :index do
+    summary 'Fetches all Product items'
+    notes 'This lists all the products'
+  end
+  
   def index
     @products = Product.all
   end
 
   # GET /products/1
   # GET /products/1.json
+  swagger_api :show do
+    summary 'Returns a product'
+    notes 'Returns a product'
+    param :path, :id, :integer, :required, "Product ID"
+    response :ok, "Success", :Product
+    response :not_found
+  end
+
   def show
   end
 
@@ -23,6 +39,15 @@ class ProductsController < ApplicationController
 
   # POST /products
   # POST /products.json
+  swagger_api :create do
+    summary "Creates a new Product"
+    param :form, :name, :string, :required, "Product name"
+    param :form, :description, :string, :required, "Product decription"
+    param :form, :price, :float, :required, "Product price"
+    response :unauthorized
+    response :not_acceptable
+  end
+
   def create
     @product = Product.new(product_params)
 
@@ -37,8 +62,18 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
+  # PUT/PATCH /products/1
+  # PUT/PATCH /products/1.json
+  swagger_api :update do
+    summary "Update an existing Product"
+    param :path, :id, :string, :required, "Product ID"
+    param :form, :name, :string, :optional, "Product name"
+    param :form, :description, :string, :optional, "Product decription"
+    param :form, :price, :float, :optional, "Product price"
+    response :unauthorized
+    response :not_acceptable
+  end
+  
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -53,6 +88,13 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   # DELETE /products/1.json
+  swagger_api :delete do
+    summary "Delete an existing Product"
+    param :path, :id, :string, :required, "Product ID"
+    response :unauthorized
+    response :not_acceptable
+  end
+  
   def destroy
     @product.destroy
     respond_to do |format|

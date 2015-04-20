@@ -1,5 +1,6 @@
 == README
-Originally from: https://github.com/ezilocchi/rails_with_mongo_example.git
+Originally from: http://moredevideas.com/getting-started-rails-4-with-mongodb/
+Source is at: https://github.com/ezilocchi/rails_with_mongo_example.git
 
 This is an introductional tutorial with the intention of showing how to create a Rails 4 app with MongoDB, using Rspec and Cucumber for testing
 
