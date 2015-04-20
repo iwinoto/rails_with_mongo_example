@@ -1,0 +1,148 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://localhost:3000/",
+  "resourcePath": "products",
+  "apis": [
+    {
+      "path": "products.json",
+      "operations": [
+        {
+          "summary": "Fetches all Product items",
+          "notes": "This lists all the products",
+          "method": "get",
+          "nickname": "Products#index"
+        }
+      ]
+    },
+    {
+      "path": "products.json",
+      "operations": [
+        {
+          "summary": "Creates a new Product",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Product name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Product decription",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "float",
+              "description": "Product price",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "post",
+          "nickname": "Products#create"
+        }
+      ]
+    },
+    {
+      "path": "products/{id}.json",
+      "operations": [
+        {
+          "summary": "Returns a product",
+          "notes": "Returns a product",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Product ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "Product",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "method": "get",
+          "nickname": "Products#show"
+        }
+      ]
+    },
+    {
+      "path": "products/{id}.json",
+      "operations": [
+        {
+          "summary": "Update an existing Product",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "Product ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "name",
+              "type": "string",
+              "description": "Product name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "description",
+              "type": "string",
+              "description": "Product decription",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "float",
+              "description": "Product price",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "patch",
+          "nickname": "Products#update"
+        }
+      ]
+    }
+  ]
+}

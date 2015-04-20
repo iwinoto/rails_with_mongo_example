@@ -1,0 +1,22 @@
+---
+# This is used to control the deploy tasks in the rake file.
+# Set an environment variable ENV to one of the values below. The rake task
+# will then use the key/values for that environment to set the cloud foundry
+# target.
+# eg: to target Bluemix dev space for your organisation execute the following:
+# $ export ENV=public-dev
+# $ rake deploy
+
+env:
+  public-dev:
+    api: api.ng.bluemix.net
+    space: dev
+    organisation: iwinoto@au1.ibm.com
+  public-test:
+    api: api.ng.bluemix.net
+    space: test
+    organisation: iwinoto@au1.ibm.com
+  public-prod:
+    api: api.ng.bluemix.net
+    space: prod
+    organisation: iwinoto@au1.ibm.com
